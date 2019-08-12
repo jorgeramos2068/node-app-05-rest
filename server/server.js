@@ -4,11 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(require('./routes/usuario'));
 
+// Configuración de rutas
+app.use(require('./routes/index'));
 
 // Conexión a la BD
 mongoose.connect('mongodb://localhost:27017/cafedb', {useNewUrlParser: true, useCreateIndex: true}, (err, res) => {
